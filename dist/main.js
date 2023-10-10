@@ -1,1 +1,1 @@
-console.log("Testing connections");
+(()=>{"use strict";let t=new class{fetchData(t){fetch(`https://api.weatherapi.com/v1/current.json?key=accc068634d04769b09171233231010&q=${t}`).then((t=>t.json())).then((t=>{console.log(t)}))}};const e=()=>{console.log("Display controller test")},c=()=>{t.fetchData("Dallas")};console.log("Testing connections"),e(),c()})();
