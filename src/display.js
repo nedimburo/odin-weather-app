@@ -5,7 +5,18 @@ let weatherApp=new WeatherApp();
 const displayController=(()=>{
     const getLocationData=location=>{
         let locationWeather=weatherApp.fetchData(location);
-        console.log(locationWeather);
+        displayWeatherInfo(locationWeather);
+    };
+    const displayWeatherInfo=weatherInfo=>{
+        let mainContainer=document.getElementById("weather-info-container");
+        mainContainer.innerHTML="";
+        if (mainContainer.classList.contains("empty-container")){
+            mainContainer.classList.remove("empty-container");
+        }
+        if (!mainContainer.classList.contains("populated-container")){
+            mainContainer.classList.add("populated-container");
+        }
+        console.log(weatherInfo);
     };
     return{
         getLocationData
