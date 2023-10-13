@@ -1,26 +1,29 @@
 export default class WeatherApp{
-    fetchData(location){
+    async fetchData(location){
         let shortData={};
-        fetch(`https://api.weatherapi.com/v1/current.json?key=accc068634d04769b09171233231010&q=${location}`)
-            .then(response=>{
-                return response.json();
-            })
-            .then(response=>{
-                console.log(response);
-                shortData.location_name=response.location.name;
-                shortData.temp_c=response.current.temp_c;
-                shortData.temp_f=response.current.temp_f;
-                shortData.feelslike_c=response.current.feelslike_c;
-                shortData.feelslike_f=response.current.feelslike_f;
-                shortData.humidity=response.current.humidity;
-                shortData.condition=response.current.condition.text;
-                shortData.wind_kph=response.current.wind_kph;
-                shortData.wind_mph=response.current.wind_mph;
-                shortData.wind_dir=response.current.wind_dir;
-                shortData.is_day=response.current.is_day;
-                shortData.last_updated=response.current.last_updated;
-                shortData.uv=response.current.uv;
-            });
+        try{
+            const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=accc068634d04769b09171233231010&q=${location}`, {mode: 'cors'});
+            if (!response.ok){
+                throw new Error("Something went wrong.");
+            }
+            const locationData = await response.json();
+            shortData.location_name=locationData.location.name;
+            shortData.local_time=locationData.location.localtime;
+            shortData.temp_c=locationData.current.temp_c;
+            shortData.temp_f=locationData.current.temp_f;
+            shortData.feelslike_c=locationData.current.feelslike_c;
+            shortData.feelslike_f=locationData.current.feelslike_f;
+            shortData.humidity=locationData.current.humidity;
+            shortData.condition=locationData.current.condition.text;
+            shortData.wind_kph=locationData.current.wind_kph;
+            shortData.wind_mph=locationData.current.wind_mph;
+            shortData.wind_dir=locationData.current.wind_dir;
+            shortData.is_day=locationData.current.is_day;
+            shortData.last_updated=locationData.current.last_updated;
+            shortData.uv=locationData.current.uv;
+        }catch(error){
+            console.log(error);
+        }
         return shortData;
     }
 }

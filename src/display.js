@@ -3,11 +3,11 @@ import WeatherApp from "./WeatherApp";
 let weatherApp=new WeatherApp();
 
 const displayController=(()=>{
-    const getLocationData=location=>{
-        let locationWeather=weatherApp.fetchData(location);
-        displayWeatherInfo(locationWeather);
+    const getLocationData=async (location)=>{
+        let locationWeather=await weatherApp.fetchData(location);
+        displayWeatherInfo(locationWeather); 
     };
-    const displayWeatherInfo=weatherInfo=>{
+    const displayWeatherInfo=(weatherInfo)=>{
         let mainContainer=document.getElementById("weather-info-container");
         mainContainer.innerHTML="";
         if (mainContainer.classList.contains("empty-container")){
@@ -16,6 +16,12 @@ const displayController=(()=>{
         if (!mainContainer.classList.contains("populated-container")){
             mainContainer.classList.add("populated-container");
         }
+        let temp=document.createElement("div");
+        let location=document.createElement("div");
+        temp.textContent=weatherInfo.temp_c;
+        location.textContent=weatherInfo.location_name;
+        mainContainer.appendChild(temp);
+        mainContainer.appendChild(location);
         console.log(weatherInfo);
     };
     return{
