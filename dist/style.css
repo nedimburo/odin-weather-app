@@ -100,7 +100,7 @@ body{
 
 #weather-info{
     margin: 10px;
-    height: 200px;
+    height: 300px;
     border: 2px solid black;
 }
 
@@ -141,4 +141,9 @@ body{
 .additional-img{
     width: 26px;
     height: auto;
+}
+
+#times-container{
+    display: flex;
+    flex-direction: column;
 }

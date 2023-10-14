@@ -36,6 +36,9 @@ const displayController=(()=>{
         document.getElementById("wind-direction").textContent=weatherInfo.wind_dir;
         document.getElementById("humidity").textContent=weatherInfo.humidity+" %";
         document.getElementById("uv-index").textContent=weatherInfo.uv;
+        // Time info
+        document.getElementById("local-time").textContent="Local time: "+weatherInfo.local_time;
+        document.getElementById("last-updated").textContent="Last updated: "+weatherInfo.last_updated;
         console.log(weatherInfo);
     };
     return{
