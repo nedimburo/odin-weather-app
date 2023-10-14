@@ -10,12 +10,6 @@ const displayController=(()=>{
     const displayWeatherInfo=(weatherInfo)=>{
         let mainContainer=document.getElementById("weather-info-container");
         mainContainer.innerHTML="";
-        if (mainContainer.classList.contains("empty-container")){
-            mainContainer.classList.remove("empty-container");
-        }
-        if (!mainContainer.classList.contains("populated-container")){
-            mainContainer.classList.add("populated-container");
-        }
         let temp=document.createElement("div");
         let location=document.createElement("div");
         temp.textContent=weatherInfo.temp_c;

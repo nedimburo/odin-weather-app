@@ -71,7 +71,7 @@ body{
 }
 
 #warning-message{
-    display: flex;
+    display: none;
     justify-content: center;
     margin: 0 auto;
     margin-top: 20px;
@@ -87,17 +87,6 @@ body{
     width: 500px;
     border: 3px solid black;
     border-radius: 5px;
-    box-shadow: 2px 2px;
+    box-shadow: 2px 2px 5px gray;
     background: white;
-}
-
-.empty-container{
-    font-size: 2.4rem;
-    font-weight: 700;
-    font-style: italic;
-    text-align: center;
-}
-
-.populated-container{
-    width: 650px;
 }
