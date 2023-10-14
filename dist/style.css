@@ -122,3 +122,14 @@ body{
     width: 26px;
     height: auto;
 }
+
+#day-night-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.day-night-img{
+    width: 28px;
+    height: auto;
+}

@@ -9,10 +9,28 @@ const displayController=(()=>{
         displayWeatherInfo(locationWeather); 
     };
     const displayWeatherInfo=(weatherInfo)=>{
+        // Basic info
         document.getElementById("location-name").textContent=weatherInfo.location_name;
         document.getElementById("temperature").textContent=weatherInfo.temp_c+` °C`;
         document.getElementById("condition").textContent=weatherInfo.condition;
         document.getElementById("feelslike").textContent=weatherInfo.feelslike_c+` °C`;
+        // Weather icon
+        // Day or night display
+        let dayNightContainer=document.getElementById("day-night-container");
+        dayNightContainer.innerHTML="";
+        let dayNightImg=document.createElement("img");
+        let dayNightText=document.createElement("span");
+        dayNightImg.classList.add("day-night-img");
+        if (weatherInfo.is_day==1){
+            dayNightImg.src="../dist/icons/sun.svg";
+            dayNightText.textContent="Day";
+        }
+        else{
+            dayNightImg.src="../dist/icons/moon.svg";
+            dayNightText.textContent="Night";
+        }
+        dayNightContainer.appendChild(dayNightImg);
+        dayNightContainer.appendChild(dayNightText);
         console.log(weatherInfo);
     };
     return{
