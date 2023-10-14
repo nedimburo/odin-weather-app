@@ -23,6 +23,7 @@ export default class WeatherApp{
             shortData.uv=locationData.current.uv;
         }catch(error){
             console.log(error);
+            document.getElementById("warning-message").style.display="flex";
         }
         return shortData;
     }

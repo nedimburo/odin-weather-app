@@ -4,6 +4,7 @@ let weatherApp=new WeatherApp();
 
 const displayController=(()=>{
     const getLocationData=async (location)=>{
+        document.getElementById("warning-message").style.display="none";
         let locationWeather=await weatherApp.fetchData(location);
         displayWeatherInfo(locationWeather); 
     };
@@ -28,8 +29,7 @@ export default function initializeWebsite(){
     submitButton.addEventListener("click", ()=>{
         let inputLocation=document.getElementById("location-input").value;
         if (inputLocation==""){
-            let warningMessageBox=document.getElementById("warning-message");
-            warningMessageBox.textContent="Input field is empty. Please enter the location.";
+            return;
         }
         else{
             displayController.getLocationData(inputLocation);
