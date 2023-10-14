@@ -133,3 +133,12 @@ body{
     width: 28px;
     height: auto;
 }
+
+#additional-info-container{
+    display: flex;
+}
+
+.additional-img{
+    width: 26px;
+    height: auto;
+}

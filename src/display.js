@@ -31,6 +31,11 @@ const displayController=(()=>{
         }
         dayNightContainer.appendChild(dayNightImg);
         dayNightContainer.appendChild(dayNightText);
+        // Additional info
+        document.getElementById("wind-speed").textContent=weatherInfo.wind_kph;
+        document.getElementById("wind-direction").textContent=weatherInfo.wind_dir;
+        document.getElementById("humidity").textContent=weatherInfo.humidity+" %";
+        document.getElementById("uv-index").textContent=weatherInfo.uv;
         console.log(weatherInfo);
     };
     return{
