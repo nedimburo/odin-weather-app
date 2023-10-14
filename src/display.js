@@ -9,14 +9,10 @@ const displayController=(()=>{
         displayWeatherInfo(locationWeather); 
     };
     const displayWeatherInfo=(weatherInfo)=>{
-        let mainContainer=document.getElementById("weather-info-container");
-        mainContainer.innerHTML="";
-        let temp=document.createElement("div");
-        let location=document.createElement("div");
-        temp.textContent=weatherInfo.temp_c;
-        location.textContent=weatherInfo.location_name;
-        mainContainer.appendChild(temp);
-        mainContainer.appendChild(location);
+        document.getElementById("location-name").textContent=weatherInfo.location_name;
+        document.getElementById("temperature").textContent=weatherInfo.temp_c+` °C`;
+        document.getElementById("condition").textContent=weatherInfo.condition;
+        document.getElementById("feelslike").textContent=weatherInfo.feelslike_c+` °C`;
         console.log(weatherInfo);
     };
     return{
@@ -26,6 +22,7 @@ const displayController=(()=>{
 
 export default function initializeWebsite(){
     let submitButton=document.getElementById("submit-location-button");
+    displayController.getLocationData("London");
     submitButton.addEventListener("click", ()=>{
         let inputLocation=document.getElementById("location-input").value;
         if (inputLocation==""){

@@ -17,7 +17,26 @@
         <button id="submit-location-button">Submit</button>
     </div>
     <div id="warning-message">Entered location has not been found. Please try again</div>
-    <div id="weather-info-container" class="base-container"></div>
+    <div id="weather-info-container" class="base-container">
+        <div id="buttons-container">
+            <button id="celsius-button">Celsius</button>
+            <button id="fahrenheit-button">Fahrenheit</button>
+        </div>
+        <div id="weather-info">
+            <div id="main-weather-info">
+                <div id="basic-info">
+                    <div id="location">
+                        <img src="./icons/pin.svg" alt="Pin">
+                        <span id="location-name"></span>
+                    </div>
+                    <p id="temperature"></p>
+                    <p id="condition"></p>
+                    <p id="feelslike"></p>
+                </div>
+                <div id="weather-icon-container"></div>
+            </div>
+        </div>
+    </div>
     <script src="./main.js"></script>
 </body>
 </html>
