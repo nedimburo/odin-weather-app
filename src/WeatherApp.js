@@ -15,6 +15,7 @@ export default class WeatherApp{
             shortData.feelslike_f=locationData.current.feelslike_f;
             shortData.humidity=locationData.current.humidity;
             shortData.condition=locationData.current.condition.text;
+            shortData.condition_code=locationData.current.condition.code;
             shortData.wind_kph=locationData.current.wind_kph;
             shortData.wind_dir=locationData.current.wind_dir;
             shortData.is_day=locationData.current.is_day;
