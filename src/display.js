@@ -16,10 +16,8 @@ const displayController=(()=>{
         document.getElementById("condition").textContent=weatherInfo.condition;
         document.getElementById("feelslike").textContent=weatherInfo.feelslike_c+` °C`;
         // Weather icon
-        let weatherImgContainer=document.getElementById("weather-icon-container");
-        let weatherImg=document.createElement("img");
+        let weatherImg=document.getElementById("weather-icon")
         weatherImg.src=imgPath;
-        weatherImgContainer.appendChild(weatherImg);
         // Day or night display
         let dayNightContainer=document.getElementById("day-night-container");
         dayNightContainer.innerHTML="";
