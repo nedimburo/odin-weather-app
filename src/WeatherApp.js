@@ -27,4 +27,29 @@ export default class WeatherApp{
         }
         return shortData;
     }
+
+    async fetchConditions(){
+        const response=await fetch("https://api.jsonbin.io/v3/b/652bea4554105e766fc293db/latest", 
+            {headers:
+                {'X-Master-Key':'$2a$10$SqSRVBshJYfvVRh87pS9ieG5XRZkm5s0eB7jmgsjdOM1TYf/7knky'}
+            });
+        const condidtionsList=response.json();
+        return condidtionsList;
+    }
+
+    async getImgPath(weatherCode, weatherIsDay){
+        const conditions=await this.fetchConditions();
+        let imgCode;
+        for (let i=0; i<conditions.record.length; i++){
+            if (weatherCode==conditions.record[i].code){
+                imgCode=conditions.record[i].icon;
+            }
+        }
+        if (weatherIsDay==1){
+            return `../dist/weather/64x64/day/${imgCode}.png`;
+        }
+        else{
+            return `../dist/weather/64x64/night/${imgCode}.png`;
+        }
+    }
 }

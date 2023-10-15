@@ -6,15 +6,20 @@ const displayController=(()=>{
     const getLocationData=async (location)=>{
         document.getElementById("warning-message").style.display="none";
         let locationWeather=await weatherApp.fetchData(location);
-        displayWeatherInfo(locationWeather); 
+        let imgPath=await weatherApp.getImgPath(locationWeather.condition_code, locationWeather.is_day);
+        displayWeatherInfo(locationWeather, imgPath); 
     };
-    const displayWeatherInfo=(weatherInfo)=>{
+    const displayWeatherInfo=(weatherInfo, imgPath)=>{
         // Basic info
         document.getElementById("location-name").textContent=weatherInfo.location_name;
         document.getElementById("temperature").textContent=weatherInfo.temp_c+` °C`;
         document.getElementById("condition").textContent=weatherInfo.condition;
         document.getElementById("feelslike").textContent=weatherInfo.feelslike_c+` °C`;
         // Weather icon
+        let weatherImgContainer=document.getElementById("weather-icon-container");
+        let weatherImg=document.createElement("img");
+        weatherImg.src=imgPath;
+        weatherImgContainer.appendChild(weatherImg);
         // Day or night display
         let dayNightContainer=document.getElementById("day-night-container");
         dayNightContainer.innerHTML="";
