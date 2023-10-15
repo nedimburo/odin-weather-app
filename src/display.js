@@ -6,8 +6,13 @@ const displayController=(()=>{
     const getLocationData=async (location)=>{
         document.getElementById("warning-message").style.display="none";
         let locationWeather=await weatherApp.fetchData(location);
-        let imgPath=await weatherApp.getImgPath(locationWeather.condition_code, locationWeather.is_day);
-        displayWeatherInfo(locationWeather, imgPath); 
+        if (JSON.stringify(locationWeather)=="{}"){
+            return;
+        }
+        else{
+            let imgPath=await weatherApp.getImgPath(locationWeather.condition_code, locationWeather.is_day);
+            displayWeatherInfo(locationWeather, imgPath); 
+        }        
     };
     const displayWeatherInfo=(weatherInfo, imgPath)=>{
         // Basic info
