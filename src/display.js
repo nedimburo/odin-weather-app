@@ -40,6 +40,17 @@ const displayController=(()=>{
         document.getElementById("local-time").textContent="Local time: "+weatherInfo.local_time;
         document.getElementById("last-updated").textContent="Last updated: "+weatherInfo.last_updated;
         console.log(weatherInfo);
+        // Temperature buttons
+        let celsiusButton=document.getElementById("celsius-button");
+        let fahrentheitButton=document.getElementById("fahrenheit-button");
+        celsiusButton.addEventListener("click", ()=>{
+            document.getElementById("temperature").textContent=weatherInfo.temp_c+` °C`;
+            document.getElementById("feelslike").textContent=weatherInfo.feelslike_c+` °C`;
+        });
+        fahrentheitButton.addEventListener("click", ()=>{
+            document.getElementById("temperature").textContent=weatherInfo.temp_f+` °F`;
+            document.getElementById("feelslike").textContent=weatherInfo.feelslike_f+` °F`;
+        });
     };
     return{
         getLocationData
