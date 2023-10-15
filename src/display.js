@@ -43,14 +43,24 @@ const displayController=(()=>{
         // Temperature buttons
         let celsiusButton=document.getElementById("celsius-button");
         let fahrentheitButton=document.getElementById("fahrenheit-button");
+        celsiusButton.classList.add("selected-button");
+        fahrentheitButton.classList.add("not-selected-button");
         celsiusButton.addEventListener("click", ()=>{
+            toggleButtonClass(celsiusButton, fahrentheitButton);
             document.getElementById("temperature").textContent=weatherInfo.temp_c+` °C`;
             document.getElementById("feelslike").textContent=weatherInfo.feelslike_c+` °C`;
         });
         fahrentheitButton.addEventListener("click", ()=>{
+            toggleButtonClass(fahrentheitButton, celsiusButton);
             document.getElementById("temperature").textContent=weatherInfo.temp_f+` °F`;
             document.getElementById("feelslike").textContent=weatherInfo.feelslike_f+` °F`;
         });
+    };
+    const toggleButtonClass=(selected, notSelected)=>{
+        selected.classList.add("selected-button");
+        selected.classList.remove("not-selected-button");
+        notSelected.classList.add("not-selected-button");
+        notSelected.classList.remove("selected-button");
     };
     return{
         getLocationData

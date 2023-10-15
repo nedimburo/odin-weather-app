@@ -94,8 +94,28 @@ body{
     display: flex;
 }
 
-#buttons-container button{
+.temp-button{
     flex: 1;
+    background-color: white;
+    border: none;
+    padding: 10px 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.temp-button:hover{
+    background-color: white;
+    color: #7dd3fc;
+}
+
+.selected-button{
+    color: #7dd3fc;
+}
+
+.not-selected-button{
+    background-color: #e7e5e4;
+    color: #a8a29e;
+    border-radius: 0px 0px 10px 10px;
 }
 
 #weather-info{
