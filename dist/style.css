@@ -171,8 +171,14 @@ body{
     color: #4b5563;
 }
 
+#weather-icon-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .weather-image{
-    width: 64px;
+    width: 120px;
     height: auto;
 }
 
