@@ -5,12 +5,15 @@ let weatherApp=new WeatherApp();
 const displayController=(()=>{
     const getLocationData=async (location)=>{
         document.getElementById("warning-message").style.display="none";
+        document.getElementById("load-screen").style.display="flex";
         let locationWeather=await weatherApp.fetchData(location);
         if (JSON.stringify(locationWeather)=="{}"){
+            document.getElementById("load-screen").style.display="none";
             return;
         }
         else{
             let imgPath=await weatherApp.getImgPath(locationWeather.condition_code, locationWeather.is_day);
+            document.getElementById("load-screen").style.display="none";
             displayWeatherInfo(locationWeather, imgPath); 
         }        
     };
