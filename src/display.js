@@ -20,9 +20,15 @@ const displayController=(()=>{
     const displayWeatherInfo=(weatherInfo, imgPath)=>{
         // Basic info
         document.getElementById("location-name").textContent=weatherInfo.location_name;
-        document.getElementById("temperature").textContent=weatherInfo.temp_c+` °C`;
+        if (weatherApp._selectedTemperature=="celsius"){
+            document.getElementById("temperature").textContent=weatherInfo.temp_c+" °C";
+            document.getElementById("feelslike").textContent="Feels like: "+weatherInfo.feelslike_c+" °C";
+        }
+        else{
+            document.getElementById("temperature").textContent=weatherInfo.temp_f+" °F";
+            document.getElementById("feelslike").textContent="Feels like: "+weatherInfo.feelslike_f+" °F";
+        }
         document.getElementById("condition").textContent=weatherInfo.condition;
-        document.getElementById("feelslike").textContent="Feels like: "+weatherInfo.feelslike_c+` °C`;
         // Weather icon
         let weatherImg=document.getElementById("weather-icon")
         weatherImg.src=imgPath;
@@ -58,15 +64,23 @@ const displayController=(()=>{
         celsiusButton.classList.add("selected-button");
         fahrentheitButton.classList.add("not-selected-button");
         celsiusButton.addEventListener("click", ()=>{
+            weatherApp._selectedTemperature="celsius";
             toggleButtonClass(celsiusButton, fahrentheitButton);
-            document.getElementById("temperature").textContent=weatherInfo.temp_c+` °C`;
-            document.getElementById("feelslike").textContent="Feels like: "+weatherInfo.feelslike_c+` °C`;
+            document.getElementById("temperature").textContent=weatherInfo.temp_c+" °C";
+            document.getElementById("feelslike").textContent="Feels like: "+weatherInfo.feelslike_c+" °C";
         });
         fahrentheitButton.addEventListener("click", ()=>{
+            weatherApp._selectedTemperature="fahrenheit";
             toggleButtonClass(fahrentheitButton, celsiusButton);
-            document.getElementById("temperature").textContent=weatherInfo.temp_f+` °F`;
-            document.getElementById("feelslike").textContent="Feels like: "+weatherInfo.feelslike_f+` °F`;
+            document.getElementById("temperature").textContent=weatherInfo.temp_f+" °F";
+            document.getElementById("feelslike").textContent="Feels like: "+weatherInfo.feelslike_f+" °F";
         });
+        if (weatherApp._selectedTemperature=="celsius"){
+            toggleButtonClass(celsiusButton, fahrentheitButton);
+        }
+        else{
+            toggleButtonClass(fahrentheitButton, celsiusButton);
+        }
     };
     const toggleButtonClass=(selected, notSelected)=>{
         selected.classList.add("selected-button");

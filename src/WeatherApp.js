@@ -1,4 +1,13 @@
 export default class WeatherApp{
+
+    constructor(){
+        this.selectedTemperature="celsius";
+    }
+
+    get selectedTemperature(){ return this._selectedTemperature};
+
+    set selectedTemperature(value){ this._selectedTemperature=value};
+
     async fetchData(location){
         let shortData={};
         try{
